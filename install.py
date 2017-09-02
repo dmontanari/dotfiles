@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-from os import system as sys
+import os
 from apt import Cache as Cache
+import shutil
 
 #
 # VI Improved
@@ -25,7 +26,7 @@ for vim_dep in vim_dependencies:
         # TODO : Its possible to use apt module to install packages ?
         install_the_package = 'sudo apt-get install --yes ' + vim_dep
         print('--> ', install_the_package)
-        sys(install_the_package)
+        os.system(install_the_package)
 
 # Check for vim directory
 vim_dir = os.getenviron['HOME']
@@ -40,21 +41,15 @@ else:
 print("Clonnign vundle repository...")
 clone_vundle  = "git clone https://github.com/VundleVim/Vundle.vim.git "
 clone_vundle += "~/.vim/bundle/Vundle.vim"
-sys(clone_vundle)
+os.system(clone_vundle)
 
-import shutil
 print("Copying vimrc to .vimrf")
 shutil.copy("vimrc", "~/.vimrc")
 
 print("Installing plugins...")
 vim_install_plugins = "vim +PluginsInstall +qall"
 
-sys(vim_install_plugins)
+os.system(vim_install_plugins)
 
 printf("Done.")
-
-
-
-
-
 
