@@ -2,21 +2,10 @@
 
 import os
 from apt import Cache as Cache
-import shutil
-
-#
-# VI Improved
-#
-# Depends on:
-#   vim-tiny
-#   
-#   vim-common
-#   
-#
-#
 
 vim_dependencies = ['vim-tiny','vim-common','vim-gnome',
-                    'vim-gui-common','vim-runtime','vim-scripts', 'git']
+                    'vim-gui-common','vim-runtime','vim-scripts', 
+                    'git', 'powerline', 'cmake', 'python3-jedi']
 
 cache = Cache()
 
@@ -29,7 +18,7 @@ for vim_dep in vim_dependencies:
         os.system(install_the_package)
 
 # Check for vim directory
-vim_dir = os.getenviron['HOME']
+vim_dir = os.environ['HOME']
 vim_dir += "/.vim/bundle/"
 
 if not os.path.isdir(vim_dir):
@@ -44,12 +33,17 @@ clone_vundle += "~/.vim/bundle/Vundle.vim"
 os.system(clone_vundle)
 
 print("Copying vimrc to .vimrf")
-shutil.copy("vimrc", "~/.vimrc")
+os.system("cp vimrc ~/.vimrc")
 
-print("Installing plugins...")
-vim_install_plugins = "vim +PluginsInstall +qall"
+print("---------------------------------------")
+print("Installing vim plugins...")
+print("Ignore the error about gruvbox color scheme, it will be fixed automatically")
+vim_install_plugins = "vim +PluginInstall +qall"
 
 os.system(vim_install_plugins)
 
-printf("Done.")
+print("Done. To enable YouCompleteMe its necessary to enter in the directory")
+print("~/.vim/bundle/YouCompleteMe/ and execute the install.py script there.")
+print("To see the options of YCM install, use install.py --help")
+
 

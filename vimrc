@@ -1,3 +1,7 @@
+" dmontanari vimrc file
+" based on several others from Internet
+" 
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -5,20 +9,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " ==== PLUGINS ====
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-scripts/L9'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
+Plugin 'VundleVim/Vundle.vim'           " Vim Bundle - install helper
+Plugin 'vim-scripts/L9'                 " extra commands for vim
+Plugin 'tpope/vim-fugitive'             " Git Wrapper
+Plugin 'scrooloose/nerdtree'            " NERDTree
 
 " autocomplete
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'Lokaltog/powerline'
+Plugin 'Valloric/YouCompleteMe'         " 
+Plugin 'davidhalter/jedi-vim'
 
-" git diff
-Plugin 'airblade/vim-gitgutter'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'sjl/gundo.vim'
-Plugin 'godlygeek/tabular'
+Plugin 'airblade/vim-gitgutter'         " Show git differences
 
 " Track the engine.
 Plugin 'SirVer/ultisnips'
@@ -35,11 +35,20 @@ Plugin 'morhetz/gruvbox'
 " ==== END PLUGIN THEMES ====
 
 " ==== PLUGIN SYNTAXES ====
-Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'hdima/python-syntax'
-Plugin 'othree/yajs.vim'
-Plugin 'mitsuhiko/vim-jinja'
-Plugin 'evanmiller/nginx-vim-syntax'
+
+" =================================================
+" Powerline
+"      Install for last
+Plugin 'Lokaltog/powerline'
+
+" ================================================
+" Airline - another look powerline
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+
+
+
 " === END PLUGIN SYNTAXES ====
 
 " ==== END PLUGINS ====
@@ -50,6 +59,10 @@ call vundle#end()
 let g:Powerline_symbols = 'fancy'
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
+" ====== airline ======
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " ==== BASIC ====
 colorscheme gruvbox
@@ -63,7 +76,6 @@ set number
 set laststatus=2
 set smartindent
 set st=4 sw=4 et
-let &colorcolumn="80"
 
 " ==== OmniComplete ====
 "
@@ -119,6 +131,7 @@ let g:curdir=dir[len(dir)-1]
     autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
     autocmd InsertLeave * match ExtraWhitespace /\s\+$/
     autocmd BufWinLeave * call clearmatches()
+    let &colorcolumn="80"
 :endif
 
 
