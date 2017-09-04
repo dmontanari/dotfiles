@@ -76,14 +76,14 @@ set number
 set laststatus=2
 set smartindent
 set st=4 sw=4 et
+syntax on
+filetype plugin indent on
 
 " ==== OmniComplete ====
 "
 " Enable OmniCompletion
 " " http://vim.wikia.com/wiki/Omni_completion
 "execute pathogen#infect()
-syntax on
-filetype plugin indent on
 
 "filetype plugin on
 "set omnifunc=syntaxcomplete#Complete
@@ -109,6 +109,9 @@ nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
+
+" ====== YouCompleteMe options ============
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 set clipboard+=unnamed,unnamedplus,autoselect  " Share clipboard with system
 
